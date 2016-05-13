@@ -37,10 +37,16 @@ namespace Algorithms
             /* Online Test Question 2
              * Input will be a url, separate the protocol, domain and query from url into output
              */
+            Console.WriteLine("Please Enter A URL to split:");
+            line = Console.ReadLine();
+            Console.WriteLine(Algorithms.ProkarmaProvidence.URLSplit(line));
 
             /* Online Test Question 3
              * Check for formatted string made of (){}[]
              */
+            Console.WriteLine("Please Enter A String comprising of (){}[]: ");
+            line = Console.ReadLine();
+            Console.WriteLine(Algorithms.ProkarmaProvidence.FormattedString(line));
 
             /* Online Test Question 4 Could not Attempt */
 

@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Algorithms
@@ -17,7 +19,6 @@ namespace Algorithms
                 if (int.TryParse(line, out number))
                 {
                     square = number * number;
-                    
                 }
                 else
                 {
@@ -53,37 +54,41 @@ namespace Algorithms
         }
 
         /*Function to solve the second problem - Need to work on the solution. Attempted and solve the problem*/
-        public static bool URLSplit(string line)
+        public static string URLSplit(string line)
         {
-            bool result = false;
-            string[] str;
+            string protocol, domain, query = "";
+            string output = "";
             try
             {
-                str = line.Split(',');
-                if (str[0].EndsWith(str[1]))
+                query = line.Split('?')[1];
+                protocol = Regex.Split(line, "://")[0];
+                domain = Regex.Split(line, "://")[1];
+                domain = domain.Split('/')[0];
+                output = protocol + "," + domain;
+                if (!String.IsNullOrEmpty(query))
                 {
-                    result = true;
+                    output = output + "," + query;
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                output = ex.ToString();
             }
-            return result;
+            return output;
         }
 
         /*Function to solve the third problem - Need to work on the solution. Messed up*/
         public static bool FormattedString(string line)
         {
             bool result = false;
-            string[] str;
             try
             {
-                str = line.Split(',');
-                if (str[0].EndsWith(str[1]))
-                {
-                    result = true;
-                }
+                var allowedChars = new HashSet<char>(new[] { '(', '[', '{', ')', ']', '}' });
+                var stack = new Stack<char>(line.Where(c => allowedChars.Contains(c)));
+                
+                var reverseStack = stack.Reverse();
+                var sequencedBalanced = reverseStack.SequenceEqual(stack, BalancedParanthesisComparer.Instance);
+                result = sequencedBalanced;
             }
             catch (Exception ex)
             {
@@ -91,5 +96,31 @@ namespace Algorithms
             }
             return result;
         }
+    }
+}
+
+public sealed class BalancedParanthesisComparer : EqualityComparer<char>
+{
+    private static readonly BalancedParanthesisComparer _instance = new BalancedParanthesisComparer();
+
+    private BalancedParanthesisComparer() { }
+
+    public static BalancedParanthesisComparer Instance { get { return _instance; } }
+
+    public override bool Equals(char x, char y)
+    {
+        if ((x == '(' && y == ')') || (y == '(' && x == ')'))
+            return true;
+        if ((x == '[' && y == ']') || (y == '[' && x == ']'))
+            return true;
+        if (x == '{' && y == '}' || (y == '{' && x == '}'))
+            return true;
+
+        return false;
+    }
+
+    public override int GetHashCode(char obj)
+    {
+        throw new NotImplementedException();
     }
 }
