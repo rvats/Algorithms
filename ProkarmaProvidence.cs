@@ -56,18 +56,49 @@ namespace Algorithms
         /*Function to solve the second problem - Need to work on the solution. Attempted and solve the problem*/
         public static string URLSplit(string line)
         {
-            string protocol, domain, query = "";
+            string protocol = "", domain = "", query = "";
             string output = "";
             try
             {
-                query = line.Split('?')[1];
-                protocol = Regex.Split(line, "://")[0];
-                domain = Regex.Split(line, "://")[1];
-                domain = domain.Split('/')[0];
-                output = protocol + "," + domain;
+                if(line.Contains("?"))
+                {
+                    query = line.Split('?')[1];
+                }
+                if(line.Contains("://"))
+                {
+                    protocol = Regex.Split(line, "://")[0];
+                    domain = Regex.Split(line, "://")[1];
+                    if(domain.Contains("/"))
+                    {
+                        domain = domain.Split('/')[0];
+                    }
+                }               
+                
+                if (!String.IsNullOrEmpty(protocol))
+                {
+                    output = protocol;
+                }
+                if (!String.IsNullOrEmpty(domain))
+                {
+                    if (!String.IsNullOrEmpty(output))
+                    {
+                        output = output + "," + domain;
+                    }
+                    else
+                    {
+                        output = domain;
+                    }
+                }
                 if (!String.IsNullOrEmpty(query))
                 {
-                    output = output + "," + query;
+                    if(!String.IsNullOrEmpty(output))
+                    {
+                        output = output + "," + query;
+                    }
+                    else
+                    {
+                        output = domain;
+                    }
                 }
             }
             catch (Exception ex)
@@ -80,21 +111,38 @@ namespace Algorithms
         /*Function to solve the third problem - Need to work on the solution. Messed up*/
         public static bool FormattedString(string line)
         {
-            bool result = false;
-            try
+            var stack = new Stack<char>();
+            // dictionary of matching starting and ending pairs
+            var allowedChars = new Dictionary<char, char>() { { '(', ')' }, { '[', ']' }, { '{', '}' } };
+
+            var wellFormated = true;
+            foreach (var chr in line)
             {
-                var allowedChars = new HashSet<char>(new[] { '(', '[', '{', ')', ']', '}' });
-                var stack = new Stack<char>(line.Where(c => allowedChars.Contains(c)));
-                
-                var reverseStack = stack.Reverse();
-                var sequencedBalanced = reverseStack.SequenceEqual(stack, BalancedParanthesisComparer.Instance);
-                result = sequencedBalanced;
+                if (allowedChars.ContainsKey(chr))
+                {
+                    // if starting char then push on stack
+                    stack.Push(chr);
+                }
+                // ContainsValue is linear but with a small number is faster than creating another object
+                else if (allowedChars.ContainsValue(chr))
+                {
+                    // make sure something to pop if not then know it's not well formated
+                    wellFormated = stack.Any();
+                    if (wellFormated)
+                    {
+                        // hit ending char grab previous starting char
+                        var startingChar = stack.Pop();
+                        // check it is in the dictionary
+                        wellFormated = allowedChars.Contains(new KeyValuePair<char, char>(startingChar, chr));
+                    }
+                    // if not wellformated exit loop no need to continue
+                    if (!wellFormated)
+                    {
+                        break;
+                    }
+                }
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
-            }
-            return result;
+            return wellFormated;
         }
     }
 }
