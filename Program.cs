@@ -14,7 +14,7 @@ namespace Algorithms
         {
             Console.WriteLine("Thread Start/Stop/Join Sample");
 
-            Alpha oAlpha = new Alpha();
+            Threads oAlpha = new Threads();
 
             // Create the thread object, passing in the Alpha.Beta method
             // via a ThreadStart delegate. This does not start the thread.
@@ -51,6 +51,8 @@ namespace Algorithms
                 Console.Write("ThreadStateException trying to restart Alpha.Beta. ");
                 Console.WriteLine("Expected since aborted threads cannot be restarted.");
             }
+
+            Console.ReadKey();
             Thread.Sleep(3000);
         }
     }

@@ -8,9 +8,6 @@ using System.Threading.Tasks;
 
 namespace Algorithms
 {
-    delegate bool D();
-    delegate bool D2(int i);
-
     class Threads
     {
         // This method that will be called when the thread is started
@@ -21,5 +18,13 @@ namespace Algorithms
                 Console.WriteLine("Alpha.Beta is running in its own thread.");
             }
         }
+
+        // This method that will be called when the thread is started
+        public void MultiThreadedPalindrome()
+        {
+
+        }
+
+
     }
 }
