@@ -11,7 +11,7 @@ namespace Algorithms
     delegate bool D();
     delegate bool D2(int i);
 
-    class Test
+    class Lambda
     {
         public D del;
         public D2 del2;
@@ -37,3 +37,21 @@ namespace Algorithms
         }
     }
 }
+/*
+ * string choice = "Y";
+            while (choice.Equals("y") || choice.Equals("Y"))
+            {
+                Lambda test = new Lambda();
+                test.TestMethod(5);
+
+                // Prove that del2 still has a copy of
+                // local variable j from TestMethod.
+                bool result = test.del2(10);
+
+                // Output: True
+                Console.WriteLine(result);
+                Console.Write("Continue (Y/N): ");
+                choice = Console.ReadLine();
+                Console.WriteLine();
+            }
+ */

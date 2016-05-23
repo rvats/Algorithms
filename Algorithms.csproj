@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Packages\Amazon.cs" />
+    <Compile Include="Packages\Threads.cs" />
     <Compile Include="Packages\Technossus.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Packages\Lambda.cs" />
