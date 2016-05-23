@@ -172,3 +172,43 @@ public sealed class BalancedParanthesisComparer : EqualityComparer<char>
         throw new NotImplementedException();
     }
 }
+
+/*
+ * Comments on how to access the code in Program.cs Main Function
+ * string line = "";
+ *           long square = 0;
+ *           Console.Write("Please Enter Number To Square: ");
+ *           line = Console.ReadLine();
+ *           square = ProkarmaProvidence.Square(line);
+ *           Console.WriteLine("Square of " + line + " is " + square.ToString());
+ *            
+ * Online Test Question 1
+ * Input will be a string followed by Another String separated by a comma we have to find if the 
+ * string ends with substring followed after ,
+ * Console.WriteLine("Please Enter A String followed by a comma followed by another string to test the condition:");
+ *           line = Console.ReadLine();
+ *           if(ProkarmaProvidence.SubStringTest(line))
+ *           {
+ *               Console.WriteLine("String ends in SubString");
+ *           }
+ *           else
+ *           {
+ *               Console.WriteLine("String does not end in SubString");
+ *           }
+ * Online Test Question 2
+ * Input will be a url, separate the protocol, domain and query from url into output
+ * 
+ * Console.WriteLine("Please Enter A URL to split:");
+ *            line = Console.ReadLine();
+ *            Console.WriteLine(Algorithms.ProkarmaProvidence.URLSplit(line));
+ *
+ * Online Test Question 3
+ * Check for formatted string made of (){}[]
+ *
+ * Console.WriteLine("Please Enter A String comprising of (){}[]: ");
+ *            line = Console.ReadLine();
+ *            Console.WriteLine(Algorithms.ProkarmaProvidence.FormattedString(line));
+ *
+ * Online Test Question 4 Could not Attempt
+ * Some Delay to See The Final Results
+ */
