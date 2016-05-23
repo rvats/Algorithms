@@ -43,10 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Amazon.cs" />
+    <Compile Include="Packages\Amazon.cs" />
+    <Compile Include="Packages\Technossus.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="Technossus.cs" />
-    <Compile Include="ProkarmaProvidence.cs" />
+    <Compile Include="Packages\Lambda.cs" />
+    <Compile Include="Packages\ProkarmaProvidence.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

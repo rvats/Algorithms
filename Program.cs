@@ -13,25 +13,17 @@ namespace Algorithms
         static void Main(string[] args)
         {
             string choice = "Y";
-            while (choice.Equals("y")|| choice.Equals("Y"))
+            while (choice.Equals("y") || choice.Equals("Y"))
             {
-                string line = "";
+                Test test = new Test();
+                test.TestMethod(5);
 
-                Console.Write("Please Enter A String: ");
-                line = Console.ReadLine();
+                // Prove that del2 still has a copy of
+                // local variable j from TestMethod.
+                bool result = test.del2(10);
 
-                string reverse;
-                reverse = Technossus.ReverseString(line);
-                Console.WriteLine(reverse);
-
-                if (Technossus.IsStringPalindrome(line))
-                {
-                    Console.WriteLine(line + " is a palindrome.");
-                }
-                else
-                {
-                    Console.WriteLine(line + " is not a palindrome.");
-                }
+                // Output: True
+                Console.WriteLine(result);
                 Console.Write("Continue (Y/N): ");
                 choice = Console.ReadLine();
                 Console.WriteLine();
