@@ -10,10 +10,11 @@ namespace Algorithms
 {
     class Technossus
     {
-        public static bool ReverseString(string input)
+        public static string ReverseString(string input)
         {
             var source = input;
             var reversed = source.Reverse().Select(x => x.ToString()).Aggregate((x, y) => x + "." + y);
+            return reversed.ToString();
         }
 
         public static bool IsStringPalindrome(string input)

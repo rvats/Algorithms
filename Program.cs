@@ -16,8 +16,14 @@ namespace Algorithms
             while (choice.Equals("y")|| choice.Equals("Y"))
             {
                 string line = "";
+
                 Console.Write("Please Enter A String: ");
                 line = Console.ReadLine();
+
+                string reverse;
+                reverse = Technossus.ReverseString(line);
+                Console.WriteLine(reverse);
+
                 if (Technossus.IsStringPalindrome(line))
                 {
                     Console.WriteLine(line + " is a palindrome.");
