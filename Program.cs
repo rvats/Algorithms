@@ -12,26 +12,43 @@ namespace Algorithms
     {
         static void Main(string[] args)
         {
-            Thread th = Thread.CurrentThread;
-            th.Name = "MainThread";
-            Threads t = new Threads();
-            t.Beta();
-            t.CurrentThread();
-            Console.WriteLine("This is {0}", th.Name);
-            Console.ReadKey();
-            ThreadStart childref = new ThreadStart(ThreadCreationProgram.CallToChildThread);
-            Console.WriteLine("In Main: Creating the Child thread");
-            Thread childThread = new Thread(childref);
-            childThread.Start();
+            string choice = "Y";
+            while (choice.Equals("y") || choice.Equals("Y"))
+            {
+                string line = "";
 
-            //stop the main thread for some time
-            Thread.Sleep(2000);
+                Console.Write("Please Enter A Number: ");
+                line = Console.ReadLine();
 
-            //now abort the child
-            Console.WriteLine("In Main: Aborting the Child thread");
+                string reverse;
+                reverse = Technossus.ReverseString(line);
+                Console.WriteLine(reverse);
 
-            childThread.Abort();
-            Console.ReadKey();
+                if (Technossus.IsStringPalindrome(line))
+                {
+                    Console.WriteLine(line + " is a palindrome.");
+                }
+                else
+                {
+                    Console.WriteLine(line + " is not a palindrome.");
+                }
+
+                int number = 0;
+                if(int.TryParse(line, out number))
+                {
+                    if(Technossus.IsNumberPrime(number))
+                    {
+                        Console.WriteLine("{0} is Prime",number);
+                    }
+                    else
+                    {
+                        Console.WriteLine("{0} is Not Prime", number);
+                    }
+                }
+                Console.Write("Continue (Y/N): ");
+                choice = Console.ReadLine();
+                Console.WriteLine();
+            }
         }
 
     }

@@ -26,7 +26,7 @@ namespace Algorithms
         public void CurrentThread()
         {
             Thread th = Thread.CurrentThread;
-            th.Name = "Algorithms.Threads"+counter.ToString();
+            th.Name = "Algorithms.Threads";// +counter.ToString();
             Console.WriteLine("This is {0}", th.Name);
             counter++;
 
@@ -52,7 +52,7 @@ namespace Algorithms
 
             catch (ThreadAbortException e)
             {
-                Console.WriteLine("Thread Abort Exception");
+                Console.WriteLine("Thread Abort Exception " + e.ToString());
             }
             finally
             {

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Algorithms
@@ -45,6 +46,57 @@ namespace Algorithms
             string reversed =
                 new string(Enumerable.Range(1, input.Length).Select(i => input[input.Length - i]).ToArray());
             return input.Equals(reversed);
+        }
+
+        public static bool IsNumberPrime(int number)
+        {
+            // Test whether the parameter is a prime number.
+            if ((number % 2) == 0)
+            {
+                if (number == 2)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            // Note:
+            // ... This version was changed to test the square.
+            // ... Original version tested against the square root.
+            // ... Also we exclude 1 at the end.
+            for (int i = 3; (i * i) <= number; i += 2)
+            {
+                if ((number % i) == 0)
+                {
+                    return false;
+                }
+            }
+            return number != 1;
+        }
+
+        public static void ThreadCompare(string input)
+        {
+
+        }
+
+        public static bool IsStringPalindromeMultiThreaded(string input)
+        {
+            char[] inputarray = input.ToArray();
+            int i = 0, j = inputarray.Length - 1;
+            //ThreadStart comp = new ThreadStart(ThreadCompare);
+            //Thread comparechar = new Thread(comp);
+            while (i < j)
+            {
+                if (inputarray[i] != inputarray[j])
+                {
+                    return false;
+                }
+                i++;
+                j--;
+            }
+            return true;
         }
     }
 }
