@@ -4,7 +4,7 @@ using System.Threading;
 
 namespace Algorithms
 {
-    public delegate void IsStringPalindromeCallBack(ref bool result);
+    public delegate void IsStringPalindromeCallBack(bool result);
 
     class Technossus
     {
@@ -73,10 +73,9 @@ namespace Algorithms
             return number != 1;
         }
 
-        public static void PalindromStringThread(object input)
+        public static void PalindromeStringThread(object input)
         {
             IsStringPalindromeCallBack result = new IsStringPalindromeCallBack(IsStringPalindrome);
-            bool output = false;
             if (input != null)
             {
                 string test = input.ToString();
@@ -86,17 +85,17 @@ namespace Algorithms
                 {
                     if (inputarray[i] != inputarray[j])
                     {
-                        result(ref output);
+                        result(false);
+                        return;
                     }
                     i++;
                     j--;
                 }
             }
-            output = true;
-            result(ref output);
+            result(true);
         }
 
-        public static void IsStringPalindrome(ref bool output)
+        public static void IsStringPalindrome(bool output)
         {
             if (output)
                 Console.WriteLine("String is Palindrome");
@@ -106,8 +105,8 @@ namespace Algorithms
         {
 
             IsStringPalindromeCallBack result = new IsStringPalindromeCallBack(IsStringPalindrome);
-            Thread comparechar = new Thread(new ParameterizedThreadStart(PalindromStringThread));
-            comparechar.Start();
+            Thread comparechar = new Thread(new ParameterizedThreadStart(PalindromeStringThread));
+            comparechar.Start(input);
 
         }
     }
