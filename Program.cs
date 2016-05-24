@@ -16,6 +16,7 @@ namespace Algorithms
             LINQ.TestLinqQuery();
             LINQ.TestLinqLambda();
             LINQ.TestLinqEnumerable();
+            LINQ.TestLINQXML();
         }
 
     }

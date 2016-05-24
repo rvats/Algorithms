@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Linq;
 using System.Linq;
+using System.Xml.Linq;
 
 namespace Algorithms
 {
@@ -75,36 +76,59 @@ namespace Algorithms
             Console.ReadLine();
         }
 
-        public static void LINQInsert()
+        public static void TestLINQXML()
         {
-            string connectString = System.Configuration.ConfigurationManager.ConnectionStrings["LINQDBConnectionString"].ToString();
+            string myXML = @"<Departments>
+                       <Department>Account</Department>
+                       <Department>Sales</Department>
+                       <Department>Pre-Sales</Department>
+                       <Department>Marketing</Department>
+                       </Departments>";
 
-            DataContext db = new DataContext(connectString);
+            XDocument xdoc = new XDocument();
+            xdoc = XDocument.Parse(myXML);
 
-            //Create new Employee
-            Employee newEmployee = new Employee();
-            newEmployee.Name = "Michael";
-            newEmployee.Email = "yourname@companyname.com";
-            newEmployee.ContactNo = "343434343";
-            newEmployee.DepartmentId = 3;
-            newEmployee.Address = "Michael - USA";
+            var result = xdoc.Element("Departments").Descendants();
 
-            //Add new Employee to database
-            db.Employees.InsertOnSubmit(newEmployee);
-
-            //Save changes to Database.
-            db.SubmitChanges();
-
-            //Get new Inserted Employee            
-            Employee insertedEmployee = db.Employees.FirstOrDefault(e => e.Name.Equals("Michael"));
-
-            Console.WriteLine("Employee Id = {0} , Name = {1}, Email = {2}, ContactNo = {3}, Address = {4}",
-                              insertedEmployee.EmployeeId, insertedEmployee.Name, insertedEmployee.Email,
-                              insertedEmployee.ContactNo, insertedEmployee.Address);
+            foreach (XElement item in result)
+            {
+                Console.WriteLine("Department Name - " + item.Value);
+            }
 
             Console.WriteLine("\nPress any key to continue.");
             Console.ReadKey();
         }
+
+        //public static void LINQInsert()
+        //{
+        //    string connectString = System.Configuration.ConfigurationManager.ConnectionStrings["LINQDBConnectionString"].ToString();
+
+        //    DataContext db = new DataContext(connectString);
+
+        //    //Create new Employee
+        //    Employee newEmployee = new Employee();
+        //    newEmployee.Name = "Michael";
+        //    newEmployee.Email = "yourname@companyname.com";
+        //    newEmployee.ContactNo = "343434343";
+        //    newEmployee.DepartmentId = 3;
+        //    newEmployee.Address = "Michael - USA";
+
+        //    //Add new Employee to database
+        //    db.Employees.InsertOnSubmit(newEmployee);
+
+        //    //Save changes to Database.
+        //    db.SubmitChanges();
+
+        //    //Get new Inserted Employee            
+        //    Employee insertedEmployee = db.Employees.FirstOrDefault(e => e.Name.Equals("Michael"));
+
+        //    Console.WriteLine("Employee Id = {0} , Name = {1}, Email = {2}, ContactNo = {3}, Address = {4}",
+        //                      insertedEmployee.EmployeeId, insertedEmployee.Name, insertedEmployee.Email,
+        //                      insertedEmployee.ContactNo, insertedEmployee.Address);
+
+        //    Console.WriteLine("\nPress any key to continue.");
+        //    Console.ReadKey();
+        //}
     }
 }
 //At the end of each file there are sample use cases which can be entered into the main program to run the code.
