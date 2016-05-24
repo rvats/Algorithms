@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace Algorithms
 {
+    public delegate void IsCharEqualCallBack(bool result);
+
     class Technossus
     {
         public static string ReverseString(string input)
@@ -76,27 +73,35 @@ namespace Algorithms
             return number != 1;
         }
 
-        public static void ThreadCompare(string input)
+        public static void ThreadCompare(object input)
         {
-
-        }
-
-        public static bool IsStringPalindromeMultiThreaded(string input)
-        {
-            char[] inputarray = input.ToArray();
+            IsCharEqualCallBack result = new IsCharEqualCallBack(IsCharEqual);
+            string test = input.ToString();
+            char[] inputarray = test.ToArray();
             int i = 0, j = inputarray.Length - 1;
-            //ThreadStart comp = new ThreadStart(ThreadCompare);
-            //Thread comparechar = new Thread(comp);
-            while (i < j)
+            while(i < j)
             {
                 if (inputarray[i] != inputarray[j])
                 {
-                    return false;
+                    result(false);
                 }
                 i++;
                 j--;
             }
-            return true;
+            result(true);
+        }
+
+        public static void IsCharEqual(bool output)
+        {
+        }
+
+        public static void IsStringPalindromeMultiThreaded(string input)
+        {
+            
+            IsCharEqualCallBack result = new IsCharEqualCallBack(IsCharEqual);
+            Thread comparechar = new Thread(new ThreadStart(ThreadCompare(input)));
+            comparechar.Start();
+            
         }
     }
 }
