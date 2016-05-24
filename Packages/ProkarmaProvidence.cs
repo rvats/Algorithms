@@ -172,7 +172,7 @@ public sealed class BalancedParanthesisComparer : EqualityComparer<char>
         throw new NotImplementedException();
     }
 }
-
+//At the end of each file there are sample use cases which can be entered into the main program to run the code.
 /*
  * Comments on how to access the code in Program.cs Main Function
  * string line = "";

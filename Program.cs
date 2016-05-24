@@ -20,32 +20,7 @@ namespace Algorithms
                 Console.Write("Please Enter A Number: ");
                 line = Console.ReadLine();
 
-                //string reverse;
-                //reverse = Technossus.ReverseString(line);
-                //Console.WriteLine(reverse);
-
-                Technossus.IsStringPalindromeUsingThreading(line);
-                //if (Technossus.IsStringPalindrome(line))
-                //{
-                //    Console.WriteLine(line + " is a palindrome.");
-                //}
-                //else
-                //{
-                //    Console.WriteLine(line + " is not a palindrome.");
-                //}
-
-                //int number = 0;
-                //if(int.TryParse(line, out number))
-                //{
-                //    if(Technossus.IsNumberPrime(number))
-                //    {
-                //        Console.WriteLine("{0} is Prime",number);
-                //    }
-                //    else
-                //    {
-                //        Console.WriteLine("{0} is Not Prime", number);
-                //    }
-                //}
+                
                 Console.Write("Continue (Y/N): ");
                 choice = Console.ReadLine();
                 Console.WriteLine();
@@ -54,3 +29,4 @@ namespace Algorithms
 
     }
 }
+//At the end of each file there are sample use cases which can be entered into the main program to run the code.

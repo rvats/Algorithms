@@ -111,28 +111,37 @@ namespace Algorithms
         }
     }
 }
-
+//At the end of each file there are sample use cases which can be entered into the main program to run the code.
 /*
             string choice = "Y";
             while (choice.Equals("y")|| choice.Equals("Y"))
             {
-                string line = "";
+                //string reverse;
+                //reverse = Technossus.ReverseString(line);
+                //Console.WriteLine(reverse);
 
-                Console.Write("Please Enter A String: ");
-                line = Console.ReadLine();
+                //Technossus.IsStringPalindromeUsingThreading(line);
+                //if (Technossus.IsStringPalindrome(line))
+                //{
+                //    Console.WriteLine(line + " is a palindrome.");
+                //}
+                //else
+                //{
+                //    Console.WriteLine(line + " is not a palindrome.");
+                //}
 
-                string reverse;
-                reverse = Technossus.ReverseString(line);
-                Console.WriteLine(reverse);
-
-                if (Technossus.IsStringPalindrome(line))
-                {
-                    Console.WriteLine(line + " is a palindrome.");
-                }
-                else
-                {
-                    Console.WriteLine(line + " is not a palindrome.");
-                }
+                //int number = 0;
+                //if(int.TryParse(line, out number))
+                //{
+                //    if(Technossus.IsNumberPrime(number))
+                //    {
+                //        Console.WriteLine("{0} is Prime",number);
+                //    }
+                //    else
+                //    {
+                //        Console.WriteLine("{0} is Not Prime", number);
+                //    }
+                //}
                 Console.Write("Continue (Y/N): ");
                 choice = Console.ReadLine();
                 Console.WriteLine();
