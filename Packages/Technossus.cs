@@ -4,7 +4,7 @@ using System.Threading;
 
 namespace Algorithms
 {
-    public delegate void IsCharEqualCallBack(bool result);
+    public delegate void IsStringPalindromeCallBack(ref bool result);
 
     class Technossus
     {
@@ -18,10 +18,10 @@ namespace Algorithms
         public static bool IsStringPalindrome(string input)
         {
             char[] inputarray = input.ToArray();
-            int i = 0, j = inputarray.Length-1;
-            while(i < j)
+            int i = 0, j = inputarray.Length - 1;
+            while (i < j)
             {
-                if(inputarray[i]!=inputarray[j])
+                if (inputarray[i] != inputarray[j])
                 {
                     return false;
                 }
@@ -73,35 +73,42 @@ namespace Algorithms
             return number != 1;
         }
 
-        public static void ThreadCompare(object input)
+        public static void PalindromStringThread(object input)
         {
-            IsCharEqualCallBack result = new IsCharEqualCallBack(IsCharEqual);
-            string test = input.ToString();
-            char[] inputarray = test.ToArray();
-            int i = 0, j = inputarray.Length - 1;
-            while(i < j)
+            IsStringPalindromeCallBack result = new IsStringPalindromeCallBack(IsStringPalindrome);
+            bool output = false;
+            if (input != null)
             {
-                if (inputarray[i] != inputarray[j])
+                string test = input.ToString();
+                char[] inputarray = test.ToArray();
+                int i = 0, j = inputarray.Length - 1;
+                while (i < j)
                 {
-                    result(false);
+                    if (inputarray[i] != inputarray[j])
+                    {
+                        result(ref output);
+                    }
+                    i++;
+                    j--;
                 }
-                i++;
-                j--;
             }
-            result(true);
+            output = true;
+            result(ref output);
         }
 
-        public static void IsCharEqual(bool output)
+        public static void IsStringPalindrome(ref bool output)
         {
+            if (output)
+                Console.WriteLine("String is Palindrome");
         }
 
-        public static void IsStringPalindromeMultiThreaded(string input)
+        public static void IsStringPalindromeUsingThreading(string input)
         {
-            
-            IsCharEqualCallBack result = new IsCharEqualCallBack(IsCharEqual);
-            Thread comparechar = new Thread(new ThreadStart(ThreadCompare(input)));
+
+            IsStringPalindromeCallBack result = new IsStringPalindromeCallBack(IsStringPalindrome);
+            Thread comparechar = new Thread(new ParameterizedThreadStart(PalindromStringThread));
             comparechar.Start();
-            
+
         }
     }
 }

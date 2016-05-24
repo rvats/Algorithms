@@ -24,6 +24,7 @@ namespace Algorithms
                 reverse = Technossus.ReverseString(line);
                 Console.WriteLine(reverse);
 
+                Technossus.IsStringPalindromeUsingThreading(line);
                 if (Technossus.IsStringPalindrome(line))
                 {
                     Console.WriteLine(line + " is a palindrome.");
