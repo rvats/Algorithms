@@ -85,6 +85,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LINQEntity.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Data\TestData.cs" />
     <Compile Include="Packages\Amazon.cs" />
     <Compile Include="Packages\LINQ.cs" />
     <Compile Include="Packages\Threads.cs" />

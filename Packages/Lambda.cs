@@ -64,4 +64,5 @@ namespace Algorithms
                 choice = Console.ReadLine();
                 Console.WriteLine();
             }
+            Lambda.TestLambda();
  */

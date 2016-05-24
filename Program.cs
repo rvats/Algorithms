@@ -12,12 +12,7 @@ namespace Algorithms
     {
         static void Main(string[] args)
         {
-            LINQ.TestLinq();
-            LINQ.TestLinqQuery();
-            LINQ.TestLinqLambda();
-            LINQ.TestLinqEnumerable();
-            LINQ.TestLINQXML();
-            Lambda.TestLambda();
+            
         }
 
     }

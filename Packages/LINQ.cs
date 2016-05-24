@@ -135,20 +135,10 @@ namespace Algorithms
 }
 //At the end of each file there are sample use cases which can be entered into the main program to run the code.
 /*
- * string choice = "Y";
-            while (choice.Equals("y") || choice.Equals("Y"))
-            {
-                Lambda test = new Lambda();
-                test.TestMethod(5);
-
-                // Prove that del2 still has a copy of
-                // local variable j from TestMethod.
-                bool result = test.del2(10);
-
-                // Output: True
-                Console.WriteLine(result);
-                Console.Write("Continue (Y/N): ");
-                choice = Console.ReadLine();
-                Console.WriteLine();
-            }
+ * LINQ.TestLinq();
+            LINQ.TestLinqQuery();
+            LINQ.TestLinqLambda();
+            LINQ.TestLinqEnumerable();
+            LINQ.TestLINQXML();
+            
  */
