@@ -14,12 +14,14 @@ namespace Algorithms
             37, 32, 31, 30, 33,
             91, 90, 84, 66, 73,
             99, 42, 21, 60, 75,
-            17, 12, 61, 80, 65,
+            17, 12, 61, 80, 65
         };
         public static string[] words = {
             "Hello", "Wonderful", "LINQ", "beautiful", "world",
             "Hello World!", "Wonderfull Experience", "LINQ is Amazing", "A", "B",
             "My name is Rahul Vats", "1", "2", "A", "B",
+            "Rahul Vats", "1Number", "2Number", "ANumber", "BNumber",
+            "Test", "Number1", "Number2", "NumberA", "NumberB",
         };
         public static void TestLinq()
         {

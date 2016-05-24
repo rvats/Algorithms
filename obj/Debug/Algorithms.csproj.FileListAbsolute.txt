@@ -4,3 +4,7 @@ D:\Code\Algorithm\Algorithms\Algorithms\bin\Debug\Algorithms.pdb
 D:\Code\Algorithm\Algorithms\Algorithms\obj\Debug\Algorithms.exe
 D:\Code\Algorithm\Algorithms\Algorithms\obj\Debug\Algorithms.pdb
 D:\Code\Algorithm\Algorithms\Algorithms\obj\Debug\Algorithms.csprojResolveAssemblyReference.cache
+D:\Code\Algorithm\Algorithms\Algorithms\bin\Debug\EntityFramework.dll
+D:\Code\Algorithm\Algorithms\Algorithms\bin\Debug\EntityFramework.SqlServer.dll
+D:\Code\Algorithm\Algorithms\Algorithms\bin\Debug\EntityFramework.xml
+D:\Code\Algorithm\Algorithms\Algorithms\bin\Debug\EntityFramework.SqlServer.xml

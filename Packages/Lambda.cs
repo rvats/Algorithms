@@ -10,6 +10,7 @@ namespace Algorithms
 {
     delegate bool D();
     delegate bool D2(int i);
+    delegate int Square(int i);
 
     class Lambda
     {
@@ -34,6 +35,14 @@ namespace Algorithms
 
             // Output: j = 10 b = True
             Console.WriteLine("j = {0}. b = {1}", j, boolResult);
+        }
+
+        public static void TestLambda()
+        {
+            Square myDelegate = y => y * y;
+            int j = myDelegate(5);
+            Console.WriteLine(j);
+            Console.ReadLine();
         }
     }
 }
