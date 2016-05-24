@@ -12,11 +12,21 @@ namespace Algorithms
     {
         static void Main(string[] args)
         {
+            LINQ.TestLinq();
+            LINQ.TestLinqQuery();
+            LINQ.TestLinqLambda();
+            LINQ.TestLinqEnumerable();
+        }
+
+    }
+}
+//At the end of each file there are sample use cases which can be entered into the main program to run the code.
+/*
             string choice = "Y";
             while (choice.Equals("y") || choice.Equals("Y"))
-            {
+            {                
                 string line = "";
-
+ 
                 Console.Write("Please Enter A Number: ");
                 line = Console.ReadLine();
 
@@ -25,8 +35,4 @@ namespace Algorithms
                 choice = Console.ReadLine();
                 Console.WriteLine();
             }
-        }
-
-    }
-}
-//At the end of each file there are sample use cases which can be entered into the main program to run the code.
+*/
